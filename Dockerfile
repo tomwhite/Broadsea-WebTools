@@ -27,8 +27,9 @@ WORKDIR /usr/local/tomcat/webapps
 # deploy the OHDSI WebAPI war file from the OHDSI CI Nexus repository
 ENV WEBAPI_WAR_URL=http://repo.ohdsi.org:8085/nexus/service/local/repositories/releases/content/org/ohdsi/WebAPI/1.0.0/$WEBAPI_WAR
 
-RUN wget $WEBAPI_WAR_URL \
-	&& mv /usr/local/tomcat/webapps/WebAPI*.war /usr/local/tomcat/webapps/WebAPI.war
+#RUN wget $WEBAPI_WAR_URL \
+#	&& mv /usr/local/tomcat/webapps/WebAPI*.war /usr/local/tomcat/webapps/WebAPI.war
+COPY WebAPI-1.0.0-SNAPSHOT.war /usr/local/tomcat/webapps/WebAPI.war
 
 # deploy latest released OHDSI Atlas web application
 RUN wget https://github.com/OHDSI/Atlas/archive/released.zip \
