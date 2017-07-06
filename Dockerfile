@@ -32,9 +32,9 @@ ENV WEBAPI_WAR_URL=http://repo.ohdsi.org:8085/nexus/service/local/repositories/r
 COPY WebAPI-1.0.0-SNAPSHOT.war /usr/local/tomcat/webapps/WebAPI.war
 
 # deploy latest released OHDSI Atlas web application
-RUN wget https://github.com/OHDSI/Atlas/archive/released.zip \
-        && unzip /usr/local/tomcat/webapps/released.zip \
-	&& mv /usr/local/tomcat/webapps/Atlas-released /usr/local/tomcat/webapps/atlas \
+COPY Atlas.zip /usr/local/tomcat/webapps/released.zip
+RUN unzip /usr/local/tomcat/webapps/released.zip \
+	&& mv /usr/local/tomcat/webapps/Atlas /usr/local/tomcat/webapps/atlas \
 	&& rm -f released.zip
 
 # deploy latest released OHDSI Penelope web application
